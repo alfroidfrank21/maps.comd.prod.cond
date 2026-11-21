@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATLAS — Arquivos Confidenciais & Conhecimento Oculto</title>
+  <title>ATLAS — Arquivos Confidenciais</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,9 +12,9 @@
     :root {
       --bg-void: #040406;
       --bg-elevated: rgba(16, 16, 21, 0.62);
-      --bg-card-gold: rgba(24, 21, 16, 0.82);
+      --bg-card-gold: rgba(24, 21, 16, 0.84);
       --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-border-hover: rgba(216, 180, 102, 0.5);
+      --glass-border-hover: rgba(216, 180, 102, 0.52);
       --gold-primary: #d8b466;
       --gold-light: #f3e0b5;
       --gold-glow: rgba(216, 180, 102, 0.25);
@@ -72,7 +72,7 @@
       padding: 0 24px;
     }
 
-    /* HEADER TRANSLÚCIDO */
+    /* HEADER */
     header {
       position: sticky;
       top: 16px;
@@ -83,7 +83,7 @@
     .nav-glass {
       max-width: 1140px;
       margin: 0 auto;
-      background: rgba(10, 10, 13, 0.72);
+      background: rgba(10, 10, 13, 0.74);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
       border: 1px solid var(--glass-border);
@@ -160,7 +160,7 @@
 
     /* HERO COM SOMBRA GIRANDO ATRÁS DA LOGO */
     .hero {
-      padding: 84px 0 80px;
+      padding: 84px 0 76px;
       text-align: center;
       position: relative;
     }
@@ -283,7 +283,7 @@
     }
 
     .hero p {
-      max-width: 590px;
+      max-width: 600px;
       margin: 0 auto 36px;
       color: var(--text-secondary);
       font-size: 1.02rem;
@@ -313,25 +313,9 @@
       box-shadow: 0 12px 32px rgba(216, 180, 102, 0.24);
     }
 
-    .btn-luxury::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
-      transform: skewX(-25deg);
-      transition: left 0.65s ease;
-    }
-
     .btn-luxury:hover {
       transform: translateY(-2px);
       box-shadow: 0 16px 42px rgba(216, 180, 102, 0.38);
-    }
-
-    .btn-luxury:hover::after {
-      left: 140%;
     }
 
     .btn-glass {
@@ -353,7 +337,7 @@
       background: rgba(216, 180, 102, 0.08);
     }
 
-    /* DIVISOR ELEGANTE DE SEÇÃO */
+    /* SEÇÕES */
     .sector-divider {
       border-top: 1px solid var(--glass-border);
       padding-top: 76px;
@@ -392,7 +376,6 @@
       font-weight: 300;
     }
 
-    /* CARDS DE PACOTES REVELADORES */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -518,7 +501,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .price-info .old {
@@ -529,7 +512,7 @@
     }
 
     .price-info .val {
-      font-size: 1.45rem;
+      font-size: 1.42rem;
       font-weight: 600;
       color: var(--gold-light);
     }
@@ -545,20 +528,43 @@
       color: var(--text-secondary);
     }
 
-    .action-link {
-      padding: 11px 18px;
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .preview-btn {
+      padding: 10px 12px;
       border-radius: 9px;
-      border: 1px solid rgba(216, 180, 102, 0.42);
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preview-btn:hover {
+      border-color: var(--gold-primary);
+      color: var(--gold-light);
+    }
+
+    .action-link {
+      padding: 10px 16px;
+      border-radius: 9px;
+      border: 1px solid rgba(216, 180, 102, 0.45);
       color: var(--gold-light);
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       transition: all 0.25s;
       white-space: nowrap;
-      position: relative;
-      z-index: 2;
     }
 
     .action-link:hover,
@@ -570,7 +576,75 @@
       box-shadow: 0 0 20px var(--gold-glow);
     }
 
-    /* CANAIS & LINKS */
+    /* MODAL DE PRÉVIA CONFIDENCIAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      max-width: 560px;
+      width: 100%;
+      background: #0d0d11;
+      border: 1px solid rgba(216, 180, 102, 0.4);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95);
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-close {
+      background: none;
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+      border-color: var(--gold-primary);
+    }
+
+    .modal-excerpt {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 2px solid var(--gold-primary);
+      padding: 16px;
+      border-radius: 6px;
+      color: #d4d4d8;
+      font-size: 0.9rem;
+      margin: 18px 0 24px;
+    }
+
+    .modal-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* CANAIS */
     .channel-list {
       display: flex;
       flex-direction: column;
@@ -666,7 +740,7 @@
       <nav class="nav-links">
         <a href="#geopolitica">Geopolítica</a>
         <a href="#alien">Arquivos Alien</a>
-        <a href="#oculto">Ocultismo & História</a>
+        <a href="#oculto">Ocultismo</a>
         <a href="#cofre-vip">Cofre Black</a>
       </nav>
       <a href="#cofre-vip" class="nav-cta">Acesso Total</a>
@@ -690,18 +764,16 @@
 
     <h1>O que foi ocultado do público, separado por dossiê.</h1>
     <p>
-      Escolha exatamente o que você quer descobrir: da próxima crise geopolítica aos arquivos sobre Trump e o fenômeno alienígena, até registros históricos proibidos.
+      Inspecione prévias, escolha o tema exato — da próxima crise geopolítica aos arquivos sobre Trump e o fenômeno alienígena — e desbloqueie na hora.
     </p>
 
     <div class="hero-buttons">
       <a href="#geopolitica" class="btn-luxury">Explorar Dossiês</a>
-      <a href="#cofre-vip" class="btn-glass">Passes Completos</a>
+      <a href="#cofre-vip" class="btn-glass">Cofre & Círculo Black</a>
     </div>
   </section>
 
-  <!-- ========================================================= -->
-  <!-- SETOR 01: GEOPOLÍTICA & CRISE GLOBAL                      -->
-  <!-- ========================================================= -->
+  <!-- SETOR 01: GEOPOLÍTICA -->
   <section id="geopolitica" class="container sector-divider reveal">
     <div class="section-head">
       <div>
@@ -709,12 +781,11 @@
         <h2 class="section-title">Geopolítica & A Próxima Crise</h2>
       </div>
       <p class="section-subtitle">
-        Movimentos silenciosos entre potências, rupturas financeiras e o que acontece longe das manchetes oficiais.
+        Movimentos silenciosos entre potências, rupturas financeiras e sinais que antecedem grandes choques.
       </p>
     </div>
 
     <div class="grid-3">
-      <!-- PACOTE GEO 1 (ULTRA ACESSÍVEL) -->
       <article class="glass-card">
         <div>
           <div class="card-top mono">
@@ -722,13 +793,11 @@
             <span class="doc-tag">DOSSIÊ RÁPIDO</span>
           </div>
           <h3>A Próxima Crise Geopolítica</h3>
-          <p>
-            Os 5 gatilhos silenciosos que já estão em curso e como as grandes potências estão se posicionando antes do impacto público.
-          </p>
+          <p>Os gatilhos silenciosos que já estão em curso e como as grandes potências se movem antes do impacto público.</p>
           <ul class="perks">
-            <li>Mapa das zonas de tensão e rotas críticas</li>
+            <li>Zonas de tensão e rotas estratégicas</li>
             <li>Cronologia dos movimentos recentes</li>
-            <li>Leitura direta em PDF (38 páginas)</li>
+            <li>PDF direto ao ponto</li>
           </ul>
         </div>
         <div class="price-row">
@@ -737,11 +806,13 @@
             <span class="val">R$ 9<small>,90</small></span>
             <span class="note">Acesso imediato</span>
           </div>
-          <a href="https://seu-link-geo1.com" target="_blank" class="action-link">Abrir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('A Próxima Crise Geopolítica', 'Trecho do Dossiê GEO-01: Grandes transições de poder raramente começam com declarações públicas — começam no redirecionamento de rotas, reservas estratégicas e cadeias de suprimento...', 'R$ 9,90', 'https://seu-link-geo1.com')">Prévia</button>
+            <a href="https://seu-link-geo1.com" target="_blank" class="action-link checkout-link">Abrir</a>
+          </div>
         </div>
       </article>
 
-      <!-- PACOTE GEO 2 -->
       <article class="glass-card">
         <div>
           <div class="card-top mono">
@@ -749,12 +820,10 @@
             <span class="doc-tag">DOSSIÊ + MAPAS</span>
           </div>
           <h3>Arquitetura do Poder & Controle Global</h3>
-          <p>
-            Como blocos econômicos, crises fabricadas e decisões de bastidores redesenham fronteiras e moedas sem aviso prévio.
-          </p>
+          <p>Como blocos econômicos, crises fabricadas e acordos de bastidores redesenham fronteiras e moedas.</p>
           <ul class="perks">
-            <li>Dossiê completo + infográficos exclusivos</li>
-            <li>Análise de documentos estratégicos</li>
+            <li>Dossiê completo + mapas exclusivos</li>
+            <li>Análise de movimentos estratégicos</li>
             <li>Atualizações de cenário 2026</li>
           </ul>
         </div>
@@ -764,11 +833,13 @@
             <span class="val">R$ 29<small>,90</small></span>
             <span class="note">PDF + Mapas HD</span>
           </div>
-          <a href="https://seu-link-geo2.com" target="_blank" class="action-link">Adquirir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Arquitetura do Poder & Controle Global', 'Trecho do Dossiê GEO-02: Quando a tensão comercial escalona em silêncio, o capital busca abrigo antes que o público perceba a mudança de eixo...', 'R$ 29,90', 'https://seu-link-geo2.com')">Prévia</button>
+            <a href="https://seu-link-geo2.com" target="_blank" class="action-link checkout-link">Adquirir</a>
+          </div>
         </div>
       </article>
 
-      <!-- PACOTE GEO 3 (CURSO) -->
       <article class="glass-card featured">
         <div>
           <div class="card-top mono">
@@ -776,9 +847,7 @@
             <span class="doc-tag">CURSO COMPLETO</span>
           </div>
           <h3>Leitura Oculta da Geopolítica</h3>
-          <p>
-            Aprenda a decifrar sinais políticos, movimentos militares e discursos cifrados antes que virem notícia comum.
-          </p>
+          <p>Aprenda a decifrar sinais políticos, movimentos militares e discursos cifrados antes que virem notícia comum.</p>
           <ul class="perks">
             <li>6 módulos em vídeo direto ao ponto</li>
             <li>Todos os dossiês de Geopolítica inclusos</li>
@@ -791,15 +860,16 @@
             <span class="val">R$ 127<small>,00</small></span>
             <span class="note">ou 12x no cartão</span>
           </div>
-          <a href="https://seu-link-geo3.com" target="_blank" class="action-link">Acessar</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Leitura Oculta da Geopolítica', 'Módulo 01 em destaque: Como cruzar dados de logística, energia e diplomacia para ler cenários sem depender de manchetes...', 'R$ 127,00', 'https://seu-link-geo3.com')">Prévia</button>
+            <a href="https://seu-link-geo3.com" target="_blank" class="action-link checkout-link">Acessar</a>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- ========================================================= -->
-  <!-- SETOR 02: ARQUIVOS ALIENÍGENAS, TRUMP & IMAGENS           -->
-  <!-- ========================================================= -->
+  <!-- SETOR 02: ALIENÍGENAS, TRUMP & IMAGENS -->
   <section id="alien" class="container sector-divider reveal">
     <div class="section-head">
       <div>
@@ -807,12 +877,11 @@
         <h2 class="section-title">Arquivos Alienígenas, Trump & Registros</h2>
       </div>
       <p class="section-subtitle">
-        O que se discute a portas fechadas em Washington, relatórios desclassificados e o acervo visual mantido fora do radar.
+        O que se comenta nos bastidores do poder sobre o fenômeno oculto, arquivos reservados e acervo visual.
       </p>
     </div>
 
     <div class="grid-3">
-      <!-- PACOTE ALIEN 1 (ULTRA ACESSÍVEL) -->
       <article class="glass-card">
         <div>
           <div class="card-top mono">
@@ -820,12 +889,10 @@
             <span class="doc-tag">ARQUIVO SECRETO</span>
           </div>
           <h3>O Que Trump Sabe Sobre o Fenômeno Escondido</h3>
-          <p>
-            Os bastidores das reuniões confidenciais, declarações ignoradas pela imprensa e o impasse sobre a revelação oficial.
-          </p>
+          <p>Os bastidores das conversas sobre arquivos reservados, pressões institucionais e o que permanece sob sigilo.</p>
           <ul class="perks">
-            <li>Linha do tempo dos arquivos reservados</li>
-            <li>Depoimentos e trechos de audiências</li>
+            <li>Cronologia e bastidores dos arquivos</li>
+            <li>Pontos centrais ignorados pela mídia</li>
             <li>Leitura rápida em PDF</li>
           </ul>
         </div>
@@ -835,11 +902,13 @@
             <span class="val">R$ 14<small>,90</small></span>
             <span class="note">Acesso imediato</span>
           </div>
-          <a href="https://seu-link-uap1.com" target="_blank" class="action-link">Abrir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('O Que Trump Sabe Sobre o Fenômeno Escondido', 'Trecho do Arquivo UAP-01: Por que certos dossiês de defesa e inteligência nunca são abertos por inteiro, mesmo após promessas de transparência...', 'R$ 14,90', 'https://seu-link-uap1.com')">Prévia</button>
+            <a href="https://seu-link-uap1.com" target="_blank" class="action-link checkout-link">Abrir</a>
+          </div>
         </div>
       </article>
 
-      <!-- PACOTE ALIEN 2 (IMAGENS & REGISTROS) -->
       <article class="glass-card featured">
         <div>
           <div class="card-top mono">
@@ -847,12 +916,10 @@
             <span class="doc-tag">ACERVO VISUAL</span>
           </div>
           <h3>Dossiê Visual: Imagens, Radares & Registros</h3>
-          <p>
-            Compilação organizada de fotografias, registros de sensores, coordenadas e documentos oficiais liberados sob sigilo.
-          </p>
+          <p>Compilação organizada de fotografias, registros de sensores, coordenadas e documentos liberados sob sigilo.</p>
           <ul class="perks">
             <li>Galeria comentada de imagens e registros</li>
-            <li>Análise caso a caso sem sensacionalismo</li>
+            <li>Análise caso a caso direta</li>
             <li>Acesso vitalício às novas inclusões</li>
           </ul>
         </div>
@@ -862,25 +929,25 @@
             <span class="val">R$ 37<small>,00</small></span>
             <span class="note">PDF + Galeria HD</span>
           </div>
-          <a href="https://seu-link-uap2.com" target="_blank" class="action-link">Desbloquear</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Dossiê Visual: Imagens, Radares & Registros', 'Acervo UAP-02: Registros visuais e coordenadas reunidos para comparação direta, destacando padrões geométricos e anomalias...', 'R$ 37,00', 'https://seu-link-uap2.com')">Prévia</button>
+            <a href="https://seu-link-uap2.com" target="_blank" class="action-link checkout-link">Desbloquear</a>
+          </div>
         </div>
       </article>
 
-      <!-- PACOTE ALIEN 3 -->
       <article class="glass-card">
         <div>
           <div class="card-top mono">
             <span class="doc-code">UAP // 03</span>
             <span class="doc-tag">INVESTIGAÇÃO</span>
           </div>
-          <h3>Programas Negros & Tecnologia Reversa</h3>
-          <p>
-            Orçamentos ocultos, contratos privados e a história paralela da corrida tecnológica aeroespacial desde 1947.
-          </p>
+          <h3>Programas Negros & Tecnologia Oculta</h3>
+          <p>Orçamentos fora do radar, contratos privados e a história paralela da corrida tecnológica desde 1947.</p>
           <ul class="perks">
-            <li>Dossiê aprofundado (140 páginas)</li>
-            <li>Mapeamento de instalações e agências</li>
-            <li>Áudio-resumo para ouvir onde quiser</li>
+            <li>Dossiê aprofundado em PDF</li>
+            <li>Mapeamento de agências e fatos</li>
+            <li>Áudio-resumo incluso</li>
           </ul>
         </div>
         <div class="price-row">
@@ -889,15 +956,16 @@
             <span class="val">R$ 47<small>,00</small></span>
             <span class="note">PDF + Áudio</span>
           </div>
-          <a href="https://seu-link-uap3.com" target="_blank" class="action-link">Adquirir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Programas Negros & Tecnologia Oculta', 'Trecho do Dossiê UAP-03: Como projetos classificados escapam da fiscalização comum por meio de subcontratações e sigilo industrial...', 'R$ 47,00', 'https://seu-link-uap3.com')">Prévia</button>
+            <a href="https://seu-link-uap3.com" target="_blank" class="action-link checkout-link">Adquirir</a>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- ========================================================= -->
-  <!-- SETOR 03: HISTÓRIA PROIBIDA, SIMBOLOGIA & MISTÉRIOS       -->
-  <!-- ========================================================= -->
+  <!-- SETOR 03: OCULTISMO & HISTÓRIA PROIBIDA -->
   <section id="oculto" class="container sector-divider reveal">
     <div class="section-head">
       <div>
@@ -905,7 +973,7 @@
         <h2 class="section-title">História Proibida & Simbologia</h2>
       </div>
       <p class="section-subtitle">
-        Textos apócrifos, civilizações pré-diluvianas e a linguagem simbólica gravada nas instituições modernas.
+        Textos antigos, civilizações apagadas e a linguagem simbólica presente nas estruturas modernas.
       </p>
     </div>
 
@@ -917,11 +985,9 @@
             <span class="doc-tag">E-BOOK</span>
           </div>
           <h3>Códigos Ocultos na Arquitetura & Marcas</h3>
-          <p>
-            Guia visual para reconhecer símbolos antigos escondidos à vista de todos em capitais, monumentos e corporações.
-          </p>
+          <p>Guia visual para reconhecer símbolos antigos escondidos à vista de todos em capitais e instituições.</p>
           <ul class="perks">
-            <li>Mais de 60 símbolos decodificados</li>
+            <li>Símbolos decodificados com exemplos</li>
             <li>Comparativo histórico e moderno</li>
             <li>Leitura direta em PDF</li>
           </ul>
@@ -932,7 +998,10 @@
             <span class="val">R$ 19<small>,90</small></span>
             <span class="note">Acesso imediato</span>
           </div>
-          <a href="https://seu-link-arc1.com" target="_blank" class="action-link">Abrir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Códigos Ocultos na Arquitetura & Marcas', 'Trecho ARC-01: A geometria e a simbologia não são acidentais — funcionam como assinatura histórica e identidade de grupos...', 'R$ 19,90', 'https://seu-link-arc1.com')">Prévia</button>
+            <a href="https://seu-link-arc1.com" target="_blank" class="action-link checkout-link">Abrir</a>
+          </div>
         </div>
       </article>
 
@@ -943,12 +1012,10 @@
             <span class="doc-tag">DOSSIÊ</span>
           </div>
           <h3>Civilizações Apagadas & Textos Antigos</h3>
-          <p>
-            O que os manuscritos antigos, relatos pré-diluvianos e achados fora de época revelam sobre a verdadeira origem humana.
-          </p>
+          <p>O que manuscritos antigos, relatos pré-diluvianos e achados fora de época revelam sobre o passado.</p>
           <ul class="perks">
-            <li>Análise de textos suprimidos e apócrifos</li>
-            <li>Mapas antigos e anomalias arqueológicas</li>
+            <li>Textos suprimidos e cronologias</li>
+            <li>Mapas antigos e anomalias</li>
             <li>PDF ilustrado em alta definição</li>
           </ul>
         </div>
@@ -958,7 +1025,10 @@
             <span class="val">R$ 37<small>,00</small></span>
             <span class="note">Acesso imediato</span>
           </div>
-          <a href="https://seu-link-arc2.com" target="_blank" class="action-link">Adquirir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Civilizações Apagadas & Textos Antigos', 'Trecho ARC-02: Por que tantas culturas antigas compartilham o mesmo relato de cataclismo e reconstrução antes da história escrita...', 'R$ 37,00', 'https://seu-link-arc2.com')">Prévia</button>
+            <a href="https://seu-link-arc2.com" target="_blank" class="action-link checkout-link">Adquirir</a>
+          </div>
         </div>
       </article>
 
@@ -969,13 +1039,11 @@
             <span class="doc-tag">DOSSIÊ</span>
           </div>
           <h3>Engenharia Social & Controle da Mente</h3>
-          <p>
-            Operações psicológicas desclassificadas e como narrativas de massa são construídas para guiar percepções coletivas.
-          </p>
+          <p>Operações psicológicas desclassificadas e como narrativas de massa moldam percepções coletivas.</p>
           <ul class="perks">
             <li>Documentos históricos comentados</li>
             <li>Mecanismos de persuasão e mídia</li>
-            <li>PDF + Guia prático de leitura crítica</li>
+            <li>PDF + Guia de leitura crítica</li>
           </ul>
         </div>
         <div class="price-row">
@@ -984,15 +1052,16 @@
             <span class="val">R$ 29<small>,90</small></span>
             <span class="note">Acesso imediato</span>
           </div>
-          <a href="https://seu-link-arc3.com" target="_blank" class="action-link">Adquirir</a>
+          <div class="card-actions">
+            <button class="preview-btn mono" onclick="openPreview('Engenharia Social & Controle da Mente', 'Trecho ARC-03: Quem controla a atenção e o medo no início de um ciclo define quase todo o comportamento posterior...', 'R$ 29,90', 'https://seu-link-arc3.com')">Prévia</button>
+            <a href="https://seu-link-arc3.com" target="_blank" class="action-link checkout-link">Adquirir</a>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- ========================================================= -->
-  <!-- SETOR 04: PASSAPORTES COMPLETOS & ALTO VALOR              -->
-  <!-- ========================================================= -->
+  <!-- SETOR 04: COFRE COMPLETO & CÍRCULO BLACK -->
   <section id="cofre-vip" class="container sector-divider reveal">
     <div class="section-head">
       <div>
@@ -1000,12 +1069,11 @@
         <h2 class="section-title">Cofre Completo & Círculo Black</h2>
       </div>
       <p class="section-subtitle">
-        Para quem não quer arquivos isolados, mas sim toda a biblioteca ATLAS unificada e acesso direto às novas descobertas.
+        Todo o acervo ATLAS unificado para quem quer acesso irrestrito aos dossiês, imagens e atualizações.
       </p>
     </div>
 
     <div class="grid-2">
-      <!-- PASSAPORTE COMPLETO -->
       <article class="glass-card featured">
         <div>
           <div class="card-top mono">
@@ -1013,14 +1081,12 @@
             <span class="doc-tag">MAIS ESCOLHIDO</span>
           </div>
           <h3>Cofre Completo ATLAS (Todos os Setores)</h3>
-          <p>
-            Desbloqueie todos os dossiês de Geopolítica, Arquivos Alienígenas, Imagens, História Proibida e todas as aulas em vídeo em um único acesso.
-          </p>
+          <p>Desbloqueie todos os dossiês de Geopolítica, Arquivos Alienígenas, Imagens, História Proibida e aulas em um único acesso.</p>
           <ul class="perks">
-            <li>Todos os 9 dossiês e e-books listados acima</li>
-            <li>Todas as formações e análises em vídeo HD</li>
+            <li>Todos os dossiês e e-books dos setores 01 a 03</li>
             <li>Acervo completo de imagens, mapas e registros</li>
-            <li>Acesso ao canal fechado no Telegram + atualizações</li>
+            <li>Aulas em vídeo + canal fechado no Telegram</li>
+            <li>Atualizações contínuas sem custo extra</li>
           </ul>
         </div>
         <div class="price-row">
@@ -1029,11 +1095,12 @@
             <span class="val">R$ 197<small>,00</small></span>
             <span class="note">ou 12x de R$ 19,78</span>
           </div>
-          <a href="https://seu-link-cofre.com" target="_blank" class="action-link">Desbloquear Tudo</a>
+          <div class="card-actions">
+            <a href="https://seu-link-cofre.com" target="_blank" class="action-link checkout-link">Desbloquear Tudo</a>
+          </div>
         </div>
       </article>
 
-      <!-- HIGH-TICKET -->
       <article class="glass-card">
         <div>
           <div class="card-top mono">
@@ -1041,14 +1108,12 @@
             <span class="doc-tag">ORDEM PRIVADA</span>
           </div>
           <h3>Círculo ATLAS Black — Acesso Vitalício</h3>
-          <p>
-            O nível máximo da ATLAS. Encontros fechados, relatórios estendidos antes da publicação e linha direta para análises profundas.
-          </p>
+          <p>O nível máximo da ATLAS: encontros fechados, relatórios estendidos e acesso vitalício prioritário.</p>
           <ul class="perks">
             <li>Tudo do Cofre Completo ATLAS incluído</li>
             <li>Encontros mensais reservados ao vivo</li>
-            <li>Notas brutas de pesquisa e dossiês inéditos</li>
-            <li>Acesso vitalício prioritário sem renovação</li>
+            <li>Notas de pesquisa e dossiês estendidos</li>
+            <li>Acesso vitalício sem renovação</li>
           </ul>
         </div>
         <div class="price-row">
@@ -1057,13 +1122,15 @@
             <span class="val">R$ 997<small>,00</small></span>
             <span class="note">ou 12x de R$ 99,90 • Vagas restritas</span>
           </div>
-          <a href="https://seu-link-black.com" target="_blank" class="action-link">Entrar no Círculo</a>
+          <div class="card-actions">
+            <a href="https://seu-link-black.com" target="_blank" class="action-link checkout-link">Entrar no Círculo</a>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- CANAIS OFICIAIS -->
+  <!-- CANAIS -->
   <section id="canais" class="container" style="margin-bottom: 92px;">
     <div class="section-head">
       <div>
@@ -1107,34 +1174,76 @@
     </div>
   </footer>
 
+  <!-- MODAL DE PRÉVIA -->
+  <div class="modal-backdrop" id="previewModal" onclick="if(event.target === this) closePreview()">
+    <div class="modal-box">
+      <div class="modal-head">
+        <span class="mono" style="font-size: 0.72rem; color: var(--gold-primary); letter-spacing: 0.16em;">PRÉVIA DO ARQUIVO // ATLAS</span>
+        <button class="modal-close" onclick="closePreview()">×</button>
+      </div>
+      <h3 class="serif" id="modalTitle" style="font-size: 1.35rem; margin-bottom: 6px;"></h3>
+      <p class="modal-excerpt" id="modalExcerpt"></p>
+      <div class="modal-foot">
+        <span id="modalPrice" style="font-size: 1.3rem; font-weight: 600; color: var(--gold-light);"></span>
+        <a id="modalCheckout" href="#" target="_blank" class="btn-luxury" style="padding: 12px 24px; font-size: 0.78rem;">Desbloquear Agora →</a>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // 1. Sombreado no cursor
     const spotlight = document.getElementById('spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.left = `${e.clientX}px`;
       spotlight.style.top = `${e.clientY}px`;
     });
 
+    // 2. Luz interna nos cards
     const cards = document.querySelectorAll('.glass-card');
     cards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
       });
     });
 
+    // 3. Modal de prévia
+    function openPreview(title, excerpt, price, url) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalExcerpt').textContent = excerpt;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modalCheckout').href = appendUtm(url);
+      document.getElementById('previewModal').classList.add('open');
+    }
+
+    function closePreview() {
+      document.getElementById('previewModal').classList.remove('open');
+    }
+
+    // 4. Rastreamento UTM automático nos links de checkout
+    function appendUtm(baseUrl) {
+      const params = new URLSearchParams(window.location.search);
+      const source = params.get('utm_source') || 'atlas_site';
+      const campaign = params.get('utm_campaign') || 'organico';
+      const sep = baseUrl.includes('?') ? '&' : '?';
+      return `${baseUrl}${sep}utm_source=${encodeURIComponent(source)}&utm_campaign=${encodeURIComponent(campaign)}`;
+    }
+
+    document.querySelectorAll('.checkout-link').forEach(link => {
+      link.href = appendUtm(link.getAttribute('href'));
+    });
+
+    // 5. Revelação ao scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // 6. Partículas douradas
     const canvas = document.getElementById('ambient-canvas');
     const ctx = canvas.getContext('2d');
     let width, height, particles;
@@ -1161,7 +1270,6 @@
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(216, 180, 102, ${p.alpha})`;
